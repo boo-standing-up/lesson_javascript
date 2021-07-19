@@ -1,0 +1,89 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+/* 全要素ボックスサイジングを使うために設定することが多い インヘリットは親から引き継ぐ*/
+
+.container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+h2 {
+  color: blue;
+}
+/* 
+あとに書いたほうがかつカスケード
+IDはとても高いから詳細度高いほうがかつ
+IDもクラス　名前がかぶってもOK */
+
+h2:hover::before {
+  content: "🎅";
+}
+
+/* 疑似要素はWコロン
+コロンは疑似クラス
+フォバーしたらあんたが現れるようにする
+一文字だけをかえることもできる */
+
+h2::after {
+  content: "🎄";
+}
+
+main > h2 {
+  color: rebeccapurple;
+}
+
+ul {
+  /* display: inline-flex; 横幅いっぱいいっぱいにしたくない場合inline-flex */
+  display: flex;
+  background-color: red;
+}
+li {
+  list-style: none;
+}
+/* これはmineの直下のh２しかきかない
+子結合子
+
+ブロックラインはDIV
+インライン要素横幅設定効かない
+ブロックは改行される
+インラインにパディングマージンボーダーは使わない。
+display:brockを作成すると無理やりブロックにできる。よく使う。
+コンフィグとは設定ファイル
+imgはインライン要素
+*/
+
+.whdiv {
+  width: 400px;
+  height: 200px;
+  padding: 20px;
+  background-color: yellow;
+}
+/* 実際に４００✗２００で表示されてほしいけど、パディングをいれると４４０✗２２０になる。
+ボーダも入れると増える。 
+マージンは影響しない
+わかりにくい
+そうするための書き方がbox-sizing*/
+
+.vvdiv {
+  box-sizing: border-box;
+  width: 400px;
+  height: 200px;
+  padding: 20px;
+  background-color: yellow;
+}
